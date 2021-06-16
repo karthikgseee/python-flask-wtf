@@ -1,0 +1,109 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background-image: url("{{url_for('static',filename = 'image1.jpg')}}");
+			}
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin-left: 200px;
+  margin-top: 30px;
+  width: 700px;
+  height: 450px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 10px;
+background-color: black;
+}
+.card .card_title {
+  text-align: left;
+  padding-left: 20px;
+  border-radius: 0px 0px 0px 0px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -400px;
+  height: 0px;
+  color:rgb(8, 255, 8);
+  font-family: 'Courier Prime', monospace;
+}
+
+.questions {
+	margin-top: 30px;
+}
+.logo {
+	margin-left: 1200px;
+	margin-top: -50px;
+	
+}
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Best Movie Actors
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+	<h1 class="pt-5 pb-2">Welcome to the best movie actors Flask example!</h1>
+	<div class="logo"><img>
+		<img src="static/logo.png" alt="logo" style="height: 100px; width: 100px;" />
+		</img></div><br/><br/>
+  <div class="row">
+    <div class="cards-list">
+		<div>
+			<div class="questions">
+				{{ wtf.quick_form(form) }}
+			</div>
+			<div class="card_title title-white">
+
+     
+	      </div>
+          </div>
+
+		  <div class="card 2">
+			<div class="card_image"></div>
+			<div class="card_title title-white">
+      <p class="response"><strong>{{ message }}</strong></p>
+	        </div>
+		</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!--
+	TIPS about using Flask-Bootstrap:
+	Flask-Bootstrap keeps the default Bootstrap stylesheet in the
+	env/lib/python3.8/site-packages/flask_bootstrap/static/css/ directory.
+	You can replace the CSS file. HOWEVER, when you reinstall requirements
+	for your project, you would overwrite all the Bootstrap files
+	with the defaults.
+	Flask-Bootstrap templates are in
+	env/lib/python3.8/site-packages/flask_bootstrap/static/templates
+	Modifying the Bootstrap base.html template: use directives and
+	Jinja2's super() function. See Jinja2 documentation and also this:
+	https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
+-->
